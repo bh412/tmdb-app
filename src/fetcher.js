@@ -12,5 +12,10 @@ export const api = {
         getFilms: () => {
             return endpoint.get(`/3/discover/movie?sort_by=popularity.desc&language=en&api_key=${API_KEY}`)
         }
+    },
+    genres: {
+        getGenres: () => {
+            return endpoint.get(`/3/genre/movie/list?language=en&api_key=${API_KEY}`)
+        }
     }
 }

@@ -7,19 +7,16 @@ import * as fetcher from "../../fetcher";
 import SearchFilters from "../../components/searchfilter";
 import MovieList from "../../components/movielist";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchDiscoveryResults} from "../../state/actions";
+import {fetchDiscoveryResults, fetchGenres} from "../../state/actions";
 
 export const Discover = (props) => {
 
   const dispatch = useDispatch();
   const [title, setTitle] = useState("Discover Ben");
   const discoverData = useSelector((state) => state?.discoverData);
+  const genreData = useSelector((state) => state?.genreData);
 
-  useEffect(() => {
-    dispatch(fetchDiscoveryResults())
-  }, [])
-
-  console.log(discoverData);
+  const totalCount = discoverData && Object.keys(discoverData).length;
 
   // constructor (props) {
   //   super(props);
@@ -48,12 +45,21 @@ export const Discover = (props) => {
   // }
 
   // Write a function to preload the popular movies when page loads & get the movie genres
+  useEffect(() => {
+    dispatch(fetchDiscoveryResults())
+    dispatch(fetchGenres())
+  }, [])
+
+  console.log(genreData);
+  console.log(discoverData);
+  discoverData && console.log(Object.keys(discoverData).length);
 
   // Write a function to trigger the API request and load the search results based on the keyword and year given as parameters
 
   return <DiscoverWrapper>
     <MobilePageTitle>{title}</MobilePageTitle> {/* Discover MobilePageTitle should become visible on small screens & mobile devices*/}
     <MovieFilters>
+      <p>right</p>
       {/*<SearchFilters*/}
       {/*    genres={genreOptions}*/}
       {/*    ratings={ratingOptions}*/}
@@ -62,11 +68,12 @@ export const Discover = (props) => {
       {/*/>*/}
     </MovieFilters>
     <MovieResults>
-      {/*{ totalCount > 0 && <TotalCounter>{totalCount} results</TotalCounter>}*/}
-      {/*<MovieList*/}
-      {/*    movies={results || []}*/}
-      {/*    genres={genreOptions || []}*/}
-      {/*/>*/}
+      <p>left</p>
+      { totalCount > 0 && <TotalCounter>{totalCount} results</TotalCounter>}
+      <MovieList
+          movies={results || []}
+          genres={genreOptions || []}
+      />
     </MovieResults>
   </DiscoverWrapper>
   // render () {
@@ -87,11 +94,13 @@ const TotalCounter = styled.div`
 `
 
 const MovieResults = styled.div`
-
+  display: flex;
+  float: left;
 `
 
 const MovieFilters = styled.div`
-
+  display: flex;
+  float: right;
 `
 
 const MobilePageTitle = styled.header`
