@@ -1,5 +1,15 @@
 # cord Coding Challenge (Front-end)
 
+### Additions
+
+- Sporadically worked on, busier than predicted
+- Moved to function / hook based React
+- Added basic Redux store
+- Utilised ReactStrap
+- Moved primaryColor to be WCAG AA compliant
+- Some of the styledComponent business doesn't seem to play nicely with certain ReactStrap components
+
+
 ### Introduction 
 Welcome! This coding challenge is designed to explore your React & SCSS frontend skills. You will have to create a simple SPA based off the provided mockup and make a few API calls to a public web API.
 
