@@ -22,7 +22,7 @@ export const Discover = () => {
   }, [])
 
   // Write a function to trigger the API request and load the search results based on the keyword and year given as parameters
-
+  // Achieved this by using actions, reducers and the redux store - for expandability in future, see calls in searchfilter for example
   return <RS.Container>
       <DiscoverWrapper>
         <RS.Row>

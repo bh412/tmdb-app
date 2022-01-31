@@ -1,11 +1,7 @@
 import React, {useState} from "react";
-import styled from 'styled-components';
 
-import Checkbox from "../checkbox";
 import * as RS from "reactstrap";
 
-// import React, { Component } from 'react';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
 
 const state = {
   keyword: '',
@@ -67,22 +63,17 @@ const Checkboxes = ({type, genres}) => {
 export const ExpandableFilter = ({type, name, genres}) => {
 
 
-  const [isBenOpen, setIsBenOpen] = useState(false);
-  const toggle = () => setIsBenOpen(!isBenOpen);
+  const [isSectionOpen, setIsSectionOpen] = useState(false);
+  const toggle = () => setIsSectionOpen(!isSectionOpen);
 
   return <div className="mb-5">
     <RS.Row>
-      <label>{isBenOpen ? "-" : "+"}</label><RS.Button color="primary" onClick={toggle} className="expanding-filter-button">{"Select " + name}</RS.Button>
+      <label>{isSectionOpen ? "-" : "+"}</label><RS.Button color="primary" onClick={toggle} className="expanding-filter-button">{"Select " + name}</RS.Button>
     </RS.Row>
-    <Collapse isOpen={false}>
-      <RS.Card hidden={!isBenOpen}>
-        <RS.CardBody>
-          <Checkboxes type={type} genres={genres}/>
-        </RS.CardBody>
-      </RS.Card>
-    </Collapse>
+    <RS.Card hidden={!isSectionOpen}>
+      <RS.CardBody>
+        <Checkboxes type={type} genres={genres}/>
+      </RS.CardBody>
+    </RS.Card>
   </div>
-
-
-  // You need to create your own checkbox component with a custom checkmark
 }

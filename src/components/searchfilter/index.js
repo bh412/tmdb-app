@@ -9,7 +9,6 @@ import {fetchDiscoveryResults, fetchGenres, fetchSearchResults} from "../../stat
 import {useDispatch, useSelector} from "react-redux";
 
 export const SearchFilters = () => {
-    // const { genres, ratings, languages, searchMovies } = this.props;
     const dispatch = useDispatch();
     const [query, setQuery] = useState("");
     const [year, setYear] = useState("");

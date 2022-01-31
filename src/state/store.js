@@ -10,6 +10,7 @@ export const middleware = [
 
 const storeFactory = (initialState) => {
 
+    // Necessary for using more complex actions / reducers
     const enhancer = composeEnhancers(
         applyMiddleware(...middleware)
     );

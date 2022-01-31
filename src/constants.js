@@ -1,5 +1,5 @@
 export const API_PATH = "https://api.themoviedb.org";
-// API_KEY left in for testing, to be moved to an external file
+// API_KEY left in for ease of testing, to be moved to an external file
 export const API_KEY = "085cb25db7a6157ba344e23d3bfc9f23";
 export const IMAGE_PATH = "https://image.tmdb.org/t/p/w154"
 
