@@ -27,9 +27,8 @@ input, textarea {
   outline: 0;
   font-family: 'Lato', sans-serif;
   background: transparent; }
-
-.search-term::placeholder {
-  color: #727614; }
+  .search-term::placeholder {
+    color: #727614; }
 
 .search-component {
   border-bottom: 1px solid #727614;

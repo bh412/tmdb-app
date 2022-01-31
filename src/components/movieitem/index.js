@@ -32,7 +32,7 @@ export const MovieItem = ({movie, genreList}) => {
                         <h3>{movie.original_title}</h3>
                       </RS.Row>
                       <RS.Row className="overview-primary">
-                          <p>{getGenres(movie).toString()}</p>
+                          <p>{getGenres(movie).join(' | ')}</p>
                       </RS.Row>
                       <RS.Row>
                           <MovieOverview>{movie.overview}</MovieOverview>
