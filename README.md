@@ -8,6 +8,7 @@
 - Utilised ReactStrap
 - Moved primaryColor to be WCAG AA compliant
 - Some of the styledComponent business doesn't seem to play nicely with certain ReactStrap components
+- Working on making mobile compliant if time + adding tests
 
 
 ### Introduction 
