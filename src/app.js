@@ -28,6 +28,7 @@ export default class App extends React.Component {
 
 const ContentWrapper = styled.main`
   padding-left: 280px;
+  display: flex;
 `
 
 const PageContainer = styled.main`

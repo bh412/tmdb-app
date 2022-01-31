@@ -22,3 +22,14 @@ export const fetchGenres = () => async (dispatch) => {
         console.log(e);
     }
 }
+
+export const fetchSearchResults = (query) => async (dispatch) => {
+    dispatch({type: ACTION_TYPE.SEARCH_REQUEST});
+    try {
+        const response = await api.search.getSearch(query);
+        dispatch({type: ACTION_TYPE.SEARCH_RESPONSE_SUCCESS, discoverData: response.data.results});
+    } catch(e) {
+        dispatch({type: ACTION_TYPE.SEARCH_RESPONSE_FAILURE});
+        console.log(e);
+    }
+}

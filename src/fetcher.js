@@ -17,5 +17,10 @@ export const api = {
         getGenres: () => {
             return endpoint.get(`/3/genre/movie/list?language=en&api_key=${API_KEY}`)
         }
+    },
+    search: {
+        getSearch: (query) => {
+            return endpoint.get(`/3/search/movie?api_key=${API_KEY}${query}`)
+        }
     }
 }
