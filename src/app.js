@@ -12,14 +12,12 @@ export default class App extends React.Component {
   render () {
     return (
       <Router>
-        <PageContainer>
-          <SideNavBar {...this.props} />
+          <SideNavBar/>
           <ContentWrapper>
             <Switch>
               <Route path="/discover" component={Discover} {...this.props}/>
             </Switch>
           </ContentWrapper>
-        </PageContainer>
       </Router>
     );
   }
@@ -27,10 +25,11 @@ export default class App extends React.Component {
 
 
 const ContentWrapper = styled.main`
-  padding-left: 280px;
-  display: flex;
-`
-
-const PageContainer = styled.main`
-  overflow-x: hidden;
+  @media (min-width: 800px) {
+    padding-left: 280px;
+    float: right;
+    position: relative;
+    display:inline-block;
+    width: max-content - 280px;
+  }
 `

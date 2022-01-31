@@ -1,21 +1,17 @@
 import React, {useEffect, useState} from "react";
 import styled from 'styled-components';
 
-import * as colors from "../../colors";
-import * as fetcher from "../../fetcher";
-
 import {SearchFilters} from "../../components/searchfilter";
 import {MovieList} from "../../components/movielist";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchDiscoveryResults, fetchGenres} from "../../state/actions";
 import * as RS from "reactstrap";
 
-export const Discover = (props) => {
+export const Discover = () => {
 
   const dispatch = useDispatch();
   const [title, setTitle] = useState("Discover");
   const discoverData = useSelector((state) => state?.discoverData);
-  const genreData = useSelector((state) => state?.genreData);
 
   const totalCount = discoverData && Object.keys(discoverData).length;
 
@@ -30,18 +26,18 @@ export const Discover = (props) => {
   return <RS.Container>
       <DiscoverWrapper>
         <RS.Row>
-          <MobilePageTitle>{title}</MobilePageTitle> {/* Discover MobilePageTitle should become visible on small screens & mobile devices*/}
+            <h1><MobilePageTitle>{title}</MobilePageTitle></h1>
         </RS.Row>
         <RS.Row>
           {totalCount > 0 && <TotalCounter>{totalCount} movies</TotalCounter>}
         </RS.Row>
-        <RS.Row>
+        <RS.Row className="mobile-movie-list">
+            <MovieFilters>
+                <SearchFilters/>
+            </MovieFilters>
             <MovieResults>
               <MovieList/>
             </MovieResults>
-            <MovieFilters>
-            <SearchFilters/>
-            </MovieFilters>
         </RS.Row>
       </DiscoverWrapper>
   </RS.Container>
@@ -49,19 +45,26 @@ export const Discover = (props) => {
 
 const DiscoverWrapper = styled.main`
   padding: 60px 35px;
+  @media (max-width: 768px) {
+    width: 100% !important;
+  }
 `
 
 const TotalCounter = styled.div`
   font-weight: 900;
+  padding-bottom: 20px;
 `
 
 const MovieResults = styled.div`
   display: flex;
   position: relative;
   float: left;
-  //width: 70%;
   flex: 0 0 70%;
   max-width: 70%;
+  @media (max-width: 768px) {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 `
 
 const MovieFilters = styled.div`
@@ -71,8 +74,14 @@ const MovieFilters = styled.div`
   flex: 0 0 30%;
   width: 25%;
   padding: 2.5%;
+  @media (max-width: 768px) {
+    max-width: 100% !important;
+    width: 100% !important;
+    }
 `
 
 const MobilePageTitle = styled.header`
-
+  @media (min-width: 768px) {
+    display: none;
+  }
 `

@@ -50,6 +50,11 @@ export const SearchFilters = () => {
 
 const FiltersWrapper = styled.div`
   position: relative;
+  @media (max-width: 768px) {
+    padding: 5%;
+    max-width: 90% !important;
+    width: 90% !important;
+  }
 `
 
 const SearchFiltersCont = styled.div`

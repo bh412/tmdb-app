@@ -64,7 +64,10 @@ const MovieItemWrapper = styled.div`
   background-color: white;
   border-radius: 3px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+  box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08);
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const LeftCont = styled.div`

@@ -1,45 +1,54 @@
 import React from "react";
 import styled, { css } from 'styled-components';
 import { NavLink as Link } from "react-router-dom";
+import { slide as Menu } from 'react-burger-menu';
+import { useMediaQuery } from 'react-responsive';
 
 import * as colors from "../../colors";
 import Arrow from "../../images/arrow-icon.png";
 import SearchWhite from "../../images/search-icon-white.png";
 
-export const SideNavBar = (props) => {
+export const SideNavBar = () => {
 
   /* Write the necessary functions to show and hide the side bar on small devices */
+    const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
-const { isSideOpen } = false //this.state;
+    return <div>
+    {isMobile ?
+        <Menu>
+            <SideNav/>
+        </Menu> :
+        <SideNav/>
+    }
+    </div>
+}
 
-return <SideNavBarCont className={isSideOpen ? 'visible' : '' + 'd-none d-lg-block'}>
-    {/* Implement a hamburger icon slide in effect for small devices */}
-    <div className="d-none d-lg-block">
+const SideNav = () => {
+    return <SideNavBarCont>
+        {/* Implement a hamburger icon slide in effect for small devices */}
         <SideNavMainLink className="menu_nav_link main_nav_link" to="/" exact>
             Wesley
-            <NavIcon arrow></NavIcon>
+            <img src={Arrow} alt="expand arrow"/>
         </SideNavMainLink>
         <SideNavMainLink className="menu_nav_link" to="/discover">
             Discover
-            <NavIcon search></NavIcon>
+            <img src={SearchWhite} alt="search icon"/>
         </SideNavMainLink>
-        <SideNavHeader><HeaderText>Watched</HeaderText></SideNavHeader>
+        <SideNavHeader>Watched</SideNavHeader>
         <NavLink className="menu_nav_link" to="/watched/movies">Movies</NavLink>
         <NavLink className="menu_nav_link" to="/watched/tv-shows">Tv Shows</NavLink>
-        <SideNavHeader><HeaderText>Saved</HeaderText></SideNavHeader>
+        <SideNavHeader>Saved</SideNavHeader>
         <NavLink className="menu_nav_link" to="/saved/movies">Movies</NavLink>
         <NavLink className="menu_nav_link" to="/saved/tv-shows">Tv Shows</NavLink>
-    </div>
-  </SideNavBarCont>
-
+    </SideNavBarCont>
 }
 
 const SideNavBarCont = styled.div`
-  position: fixed;
-  z-index: 9;
-  width: 280px;
-  height: 100%;
-  background-color: ${colors.sideNavBar};
+    position: fixed;
+    margin-right: 280px;
+    width: 280px;
+    height: 100%;
+    background-color: ${colors.sideNavBar};
 `
 
 const SideNavMainLink = styled(Link)`
@@ -67,10 +76,6 @@ const SideNavHeader = styled.div`
   font-size: 1.6em;
   border-bottom: 1px solid grey;
   margin-left: 35px;
-`
-
-const HeaderText = styled.div`
-
 `
 
 const NavLink = styled(Link)`
