@@ -1,6 +1,6 @@
 # cord Coding Challenge (Front-end)
 
-### Additions
+### Notes
 
 - Sporadically worked on, busier than predicted
 - Moved to function / hook based React
